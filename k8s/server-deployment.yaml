@@ -17,6 +17,12 @@ spec:
           image: oneandwholly/multi-server
           ports:
             - containerPort: 5000
+          livenessProbe:
+            httpGet:
+              path: /values/all
+              port: 5000
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
           env:
             - name: REDIS_HOST
               value: redis-cluster-ip-service
